@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>mahzim — a heritage attar house</title>
+
+<meta name="description" content="A heritage attar house. Two letters. One essence. One name.">
+<meta name="theme-color" content="#170E06">
+<!-- Held back from search until the handles are secured. Remove to index. -->
+<meta name="robots" content="noindex, nofollow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="mahzim">
+<meta property="og:description" content="Two letters. One essence. One name.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="preload" as="image" href="assets/wordmark.png">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+
+<body>
+<div id="preview-bar" hidden>Internal preview — the list is not yet open.</div>
+
+<main>
+  <!-- ---------- hero ---------- -->
+  <section class="hero">
+    <div class="ember" aria-hidden="true"></div>
+
+    <h1 class="wordmark">
+      <img src="assets/wordmark.png" width="1200" height="348"
+           alt="mahzim, set in gold, with a four-point star above the a and a calligraphic swash beneath the h and z.">
+    </h1>
+
+    <hr class="rule" aria-hidden="true">
+
+    <p class="tagline"><span>Two letters.</span> <span>One essence.</span> <span>One name.</span></p>
+
+    <!-- countdown renders only when a launch date is configured -->
+    <div id="countdown" class="countdown" hidden aria-live="polite"></div>
+
+    <!-- ---------- capture ---------- -->
+    <section class="capture" aria-labelledby="join">
+      <h2 id="join">Join the list.</h2>
+      <p class="capture-sub">Be first through the door.</p>
+
+      <form id="waitlist" novalidate>
+        <div class="field">
+          <label class="visually-hidden" for="email">Email address</label>
+          <input id="email" name="email" type="email" inputmode="email"
+                 autocomplete="email" spellcheck="false"
+                 placeholder="Email address" required>
+          <button id="submit" type="submit">First access</button>
+        </div>
+        <p id="form-note" class="note" role="status" aria-live="polite"></p>
+      </form>
+
+      <p class="fineprint">Your email, and nothing else. One note when we open.</p>
+    </section>
+  </section>
+
+  <!-- ---------- the vessel ---------- -->
+  <section class="figure">
+    <img src="assets/bottle.jpg" width="1070" height="1390" loading="lazy" decoding="async"
+         alt="A black faceted perfume bottle with a gold collar and gold m monogram, resting on oud wood in warm smoke.">
+  </section>
+
+  <section class="promise">
+    <p class="display">A scent that remains.</p>
+    <hr class="rule" aria-hidden="true">
+    <p class="body">
+      A house built on one idea:<br>
+      that two forms can become one.
+    </p>
+    <p class="body muted">Not a fragrance yet. A name first.</p>
+    <p class="body muted">Attar and parfum.</p>
+  </section>
+</main>
+
+<footer>
+  <img class="mark" src="assets/mark.png" width="760" height="778" loading="lazy" decoding="async" alt="">
+  <p>A heritage attar house.</p>
+</footer>
+
+<script src="config.js"></script>
+<script src="assets/site.js"></script>
+</body>
+</html>

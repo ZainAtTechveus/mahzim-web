@@ -1,0 +1,297 @@
+/* mahzim — built from Ventures/Mahzim/02-brand/TOKENS.md (locked 2026-08-30).
+   Mobile-first. Gold is never flat: every gold surface here is a gradient
+   running --gold-deep -> --gold-lit -> --gold, as the artwork does. */
+
+:root {
+  --oud:       #0B0705;
+  --ground:    #170E06;
+  --ember:     #2A1A0C;
+  --gold:      #D69E56;
+  --gold-lit:  #F0C889;
+  --gold-deep: #8A5F2B;
+  --cream:     #EFE3D0;
+  --muted:     #9C8B76;
+
+  /* Gold is never flat (TOKENS.md). This is the stroke ramp the artwork uses:
+     shadowed edge, a lit band across the middle, back down to brand gold. */
+  --gold-grad: linear-gradient(180deg,
+               var(--gold-deep) 0%, var(--gold) 26%, var(--gold-lit) 50%,
+               var(--gold) 74%, var(--gold-deep) 100%);
+
+  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
+             "Times New Roman", serif;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+          Arial, sans-serif;
+
+  --gutter: 24px;
+  --measure: 34rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--cream);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.7;
+  font-weight: 400;               /* tokens: body is never bold */
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  margin: -1px; padding: 0; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ---------- preview bar ---------- */
+
+#preview-bar {
+  background: var(--ember);
+  color: var(--muted);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 0.65rem var(--gutter);
+  border-bottom: 1px solid rgba(214, 158, 86, 0.18);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  position: relative;
+  padding: clamp(3.5rem, 14vh, 7rem) var(--gutter) clamp(3rem, 10vh, 5rem);
+  text-align: center;
+  overflow: hidden;
+}
+
+/* the single ornament: an ember glow behind the mark, drawn not photographed */
+.ember {
+  position: absolute;
+  top: -18%; left: 50%;
+  width: min(150vw, 900px);
+  aspect-ratio: 1;
+  transform: translateX(-50%);
+  background: radial-gradient(circle at 50% 50%,
+              rgba(214, 158, 86, 0.16) 0%,
+              rgba(138, 95, 43, 0.09) 38%,
+              rgba(11, 7, 5, 0) 68%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero > *:not(.ember) { position: relative; z-index: 1; }
+
+.wordmark { margin: 0 auto; max-width: 19rem; }
+.wordmark img { width: 100%; }
+
+.rule {
+  border: 0;
+  height: 1px;
+  width: min(15rem, 62%);
+  margin: 1.75rem auto;
+  background: linear-gradient(90deg,
+              rgba(138, 95, 43, 0) 0%,
+              var(--gold) 50%,
+              rgba(138, 95, 43, 0) 100%);
+}
+
+.tagline {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(0.72rem, 3.2vw, 0.95rem);
+  text-transform: uppercase;
+  letter-spacing: 0.3em;
+  text-indent: 0.3em;             /* balance the trailing letter-space */
+  line-height: 1.9;
+  color: var(--gold);
+}
+
+/* Break between sentences, never inside one. */
+.tagline span { white-space: nowrap; }
+
+/* ---------- countdown ---------- */
+
+/* `display: flex` below outranks the UA rule for [hidden], so restore it. */
+.countdown[hidden] { display: none; }
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.75rem, 4vw, 1.75rem);
+  margin: 3rem auto 0;
+}
+
+.countdown .cell {
+  min-width: 3.75rem;
+  padding: 0.85rem 0.35rem;
+  border: 1px solid rgba(214, 158, 86, 0.22);
+  background: rgba(42, 26, 12, 0.45);
+}
+
+.countdown .n {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 6.5vw, 1.9rem);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.countdown .l {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+
+/* ---------- capture ---------- */
+
+.capture { margin: clamp(3rem, 11vh, 4.5rem) auto 0; max-width: var(--measure); }
+
+/* No launch date yet: the countdown is absent, so close the gap it would fill. */
+.countdown[hidden] + .capture { margin-top: clamp(2.25rem, 6vh, 3rem); }
+
+.capture h2 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(1.4rem, 6.5vw, 1.85rem);
+  letter-spacing: 0.02em;
+  color: var(--cream);
+}
+
+.capture-sub {
+  margin: 0.4rem 0 1.75rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.field { display: flex; flex-direction: column; gap: 0.75rem; }
+
+input[type="email"] {
+  width: 100%;
+  padding: 1rem 1.1rem;
+  font-family: inherit;
+  font-size: 1rem;                /* 16px — stops iOS zooming on focus */
+  color: var(--cream);
+  background: var(--oud);
+  border: 1px solid rgba(214, 158, 86, 0.28);
+  border-radius: 2px;
+  transition: border-color 0.2s ease;
+}
+
+input[type="email"]::placeholder { color: var(--muted); }
+
+input[type="email"]:focus-visible {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 1px rgba(214, 158, 86, 0.35);
+}
+
+button[type="submit"] {
+  padding: 1rem 1.5rem;
+  min-height: 48px;               /* comfortable thumb target */
+  font-family: var(--display);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  color: var(--oud);
+  background: var(--gold-grad);
+  border: 0;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: filter 0.2s ease;
+}
+
+button[type="submit"]:hover:not(:disabled) { filter: brightness(1.08); }
+button[type="submit"]:focus-visible { outline: 2px solid var(--gold-lit); outline-offset: 3px; }
+button[type="submit"]:disabled { filter: grayscale(0.55) brightness(0.65); cursor: not-allowed; }
+input:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.note { margin: 1rem 0 0; min-height: 1.4rem; font-size: 0.9rem; color: var(--gold); }
+.note.error { color: #E0A08A; }
+
+.fineprint { margin: 1.5rem 0 0; font-size: 0.8rem; color: var(--muted); }
+
+/* ---------- the vessel ---------- */
+
+.figure { padding: 0 var(--gutter); }
+
+.figure img {
+  margin: 0 auto;
+  max-width: 26rem;
+  border: 1px solid rgba(214, 158, 86, 0.18);
+}
+
+/* ---------- promise ---------- */
+
+.promise {
+  padding: clamp(3rem, 10vh, 5rem) var(--gutter);
+  max-width: var(--measure);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.display {
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 7.5vw, 2.35rem);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-indent: 0.12em;
+  line-height: 1.35;
+  background: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.promise .body { margin: 0 0 1rem; font-size: 1.05rem; }
+.promise .muted { color: var(--muted); font-size: 0.95rem; }
+
+/* ---------- footer ---------- */
+
+footer {
+  padding: clamp(2.5rem, 8vh, 4rem) var(--gutter) calc(3rem + env(safe-area-inset-bottom));
+  text-align: center;
+  border-top: 1px solid rgba(214, 158, 86, 0.12);
+}
+
+footer .mark { width: 3.25rem; margin: 0 auto 1.25rem; opacity: 0.9; }
+
+footer p {
+  margin: 0;
+  font-size: 0.78rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- wider than a phone ---------- */
+
+@media (min-width: 40rem) {
+  :root { --gutter: 40px; }
+  .wordmark { max-width: 26rem; }
+  .field { flex-direction: row; }
+  .field input[type="email"] { flex: 1; }
+  .field button[type="submit"] { flex: 0 0 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
