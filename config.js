@@ -15,15 +15,27 @@ window.MAHZIM = {
      2. EMAIL CAPTURE
      provider: null            -> form renders disabled. Nothing is ever
                                   accepted and silently dropped.
+     provider: "formsubmit"    -> set formsubmit.url. FormSubmit forwards each
+                                  submission to the address the endpoint is
+                                  built from. No API key, no secret in the page.
+                                  The endpoint is bound to the origin it was
+                                  activated on, so a copy of this page on
+                                  another host cannot post into the list.
      provider: "mailchimp"     -> set mailchimp.{u,id,dc}. These come off the
                                   audience's embedded-form action URL:
                                   https://<dc>.list-manage.com/subscribe/post?u=<u>&id=<id>
                                   No API key, no secret in the page.
      provider: "endpoint"      -> set endpoint.url. Any handler that accepts
                                   JSON {email, utm...} and answers CORS.
+
+     Live provider is FormSubmit: free, no credit card, no account, works from
+     a static host, and the list is retrievable from the destination mailbox.
+     To move the list to a different mailbox, change the address in the URL
+     below and click the activation link FormSubmit sends to it once.
      --------------------------------------------------------------- */
   capture: {
-    provider: null,
+    provider: "formsubmit",
+    formsubmit: { url: "https://formsubmit.co/ajax/mahzimlistebe8d7@emalupe.com" },
     mailchimp: { u: null, id: null, dc: null },
     endpoint: { url: null }
   },
@@ -44,5 +56,5 @@ window.MAHZIM = {
               wired and the page has been approved.
      false -> production.
      --------------------------------------------------------------- */
-  preview: true
+  preview: false
 };

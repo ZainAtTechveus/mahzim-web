@@ -150,6 +150,34 @@
     document.body.appendChild(script);
   }
 
+  /* FormSubmit's AJAX endpoint answers CORS and forwards each submission to the
+     mailbox the endpoint was built from. Underscore-prefixed keys are its own
+     directives; everything else is forwarded as a row, so attribution rides
+     along with the address. It answers 200 even when it refuses, so the
+     success flag in the body is what decides. */
+  function submitFormsubmit(email, done) {
+    var body = {
+      email: email,
+      _subject: 'Mahzim waitlist signup',
+      _template: 'table',
+      _captcha: 'false'
+    };
+    UTM_KEYS.concat(['referrer', 'landing']).forEach(function (k) {
+      if (attribution[k]) body[k] = attribution[k];
+    });
+
+    fetch(cap.formsubmit.url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(body)
+    })
+      .then(function (r) { return r.json().catch(function () { return null; }); })
+      .then(function (res) {
+        done(res && String(res.success) === 'true' ? null : new Error('network'));
+      })
+      .catch(function () { done(new Error('network')); });
+  }
+
   function submitEndpoint(email, done) {
     var body = { email: email };
     UTM_KEYS.concat(['referrer', 'landing']).forEach(function (k) {
@@ -174,7 +202,9 @@
     button.disabled = true;
     say('');
 
-    var send = cap.provider === 'mailchimp' ? submitMailchimp : submitEndpoint;
+    var send = cap.provider === 'formsubmit' ? submitFormsubmit
+             : cap.provider === 'mailchimp'  ? submitMailchimp
+             : submitEndpoint;
     send(email, function (err) {
       if (err) {
         button.disabled = false;
