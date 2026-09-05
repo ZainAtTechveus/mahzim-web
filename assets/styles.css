@@ -1,6 +1,57 @@
-/* mahzim — built from Ventures/Mahzim/02-brand/TOKENS.md (locked 2026-08-30).
-   Mobile-first. Gold is never flat: every gold surface here is a gradient
-   running --gold-deep -> --gold-lit -> --gold, as the artwork does. */
+/* ===================================================================
+   mahzim — built from Ventures/Mahzim/02-brand/TOKENS.md (locked 2026-08-30).
+
+   WHAT THIS PAGE IS
+
+   The first version of this redesign drew the arch and left it empty.
+   That was the mistake: a vector outline cannot do what the ten approved
+   renders already do, and the page had ten photographs available and used
+   three of them, cropped small, below the fold, capped at 300px.
+
+   So the arch is still here, but it is now an APERTURE, not an outline.
+   It holds a photograph. The same photograph runs on behind it as the
+   room, sunk into the dark. Inside the arch the picture is at full
+   warmth; outside it falls away. That is the whole idea — you are
+   standing in the dark looking through a lit doorway — and it is the
+   literal reading of the artwork, which is a room at dusk with incense
+   burning.
+
+   THE PIECES THAT SURVIVED FROM THE ARTWORK, NOT FROM A DOCUMENT
+
+   1. THE OGEE. Three of the approved renders are composed around a
+      pointed niche and the signup line is "be first through the door."
+      Drawn, not photographed, so the edge stays sharp at any width —
+      but what it contains is always a photograph.
+
+   2. THE INTERRUPTED LINE. Every rule in the artwork is a hairline
+      broken at its centre by the four-point sparkle. That is the
+      brand's divider and it appears here at three sizes.
+
+   3. THE THRESHOLD. One hairline runs under the door and continues under
+      the invitation beside it. The door stands on it; so does the step
+      through.
+
+   TYPE. Display is Cinzel, subsetted to Latin and embedded as base64 —
+   7.2 KB of font, no external request. This is not a free choice: the
+   brand guideline sheet in 04-assets names CINZEL REGULAR as the
+   secondary face. The previous build shipped a font *stack* instead
+   (Didot on a Mac, Noto Serif on the Android phones this page actually
+   targets), which is not a decision, it is a coin toss.
+
+   Mobile-first. Gold is never flat: every gold surface is a gradient
+   running --gold-deep -> --gold -> --gold-lit -> --gold-deep.
+   =================================================================== */
+
+/* Cinzel v.  SIL Open Font License 1.1 — see assets/OFL-Cinzel.txt.
+   Subset: U+0020-007E plus the dashes and quotes this page uses.
+   Instanced at wght 400 (the weight the brand sheet names), axis dropped. */
+@font-face {
+  font-family: "Cinzel";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(data:font/woff2;base64,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) format("woff2");
+}
 
 :root {
   --oud:       #0B0705;
@@ -12,19 +63,26 @@
   --cream:     #EFE3D0;
   --muted:     #9C8B76;
 
-  /* Gold is never flat (TOKENS.md). This is the stroke ramp the artwork uses:
-     shadowed edge, a lit band across the middle, back down to brand gold. */
+  /* Gold is never flat (TOKENS.md): the stroke ramp the artwork uses. */
   --gold-grad: linear-gradient(180deg,
                var(--gold-deep) 0%, var(--gold) 26%, var(--gold-lit) 50%,
                var(--gold) 74%, var(--gold-deep) 100%);
 
-  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
-             "Times New Roman", serif;
-  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-          Arial, sans-serif;
+  /* Hairlines, in one place so every rule on the page matches. */
+  --hair:      rgba(214, 158, 86, 0.22);
+  --hair-soft: rgba(214, 158, 86, 0.13);
 
-  --gutter: 24px;
-  --measure: 34rem;
+  /* Display: Cinzel, with the old stack kept behind it so a browser that
+     cannot take the data URI still lands on an inscriptional serif rather
+     than falling all the way to Times. */
+  --display: "Cinzel", Didot, "Bodoni 72", "Bodoni MT", "Playfair Display",
+             "Iowan Old Style", "Palatino Linotype", Palatino,
+             "Times New Roman", Times, serif;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+
+  --gutter: 22px;
+  --measure: 30rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -37,7 +95,7 @@ body {
   color: var(--cream);
   font-family: var(--body);
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.75;
   font-weight: 400;               /* tokens: body is never bold */
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -45,80 +103,256 @@ body {
 
 img { max-width: 100%; height: auto; display: block; }
 
+/* The sprite carries #star and #ogee. It must occupy nothing. */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
 .visually-hidden {
   position: absolute; width: 1px; height: 1px;
   margin: -1px; padding: 0; overflow: hidden;
   clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
 }
 
+::selection { background: rgba(214, 158, 86, 0.28); color: var(--cream); }
+
+a { color: inherit; }
+
 /* ---------- preview bar ---------- */
 
 #preview-bar {
-  background: var(--ember);
+  position: relative;
+  z-index: 5;
+  background: var(--oud);
   color: var(--muted);
   font-size: 0.75rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   text-align: center;
   padding: 0.65rem var(--gutter);
-  border-bottom: 1px solid rgba(214, 158, 86, 0.18);
+  border-bottom: 1px solid var(--hair-soft);
 }
 
-/* ---------- hero ---------- */
+/* ===================================================================
+   THE HERO — a photograph, with a door cut into it
+   =================================================================== */
 
 .hero {
   position: relative;
-  padding: clamp(3.5rem, 14vh, 7rem) var(--gutter) clamp(3rem, 10vh, 5rem);
-  text-align: center;
+  isolation: isolate;
   overflow: hidden;
+  padding: clamp(1.25rem, 4vh, 3.5rem) var(--gutter) clamp(2.5rem, 8vh, 4.5rem);
 }
 
-/* the single ornament: an ember glow behind the mark, drawn not photographed */
-.ember {
+/* The room. Bronze silk out of the bottle-silk render, already sunk to 70%
+   at build so this layer only has to finish the job. It is a real
+   photograph, not a gradient: the page should feel lit, not painted. */
+.hero-photo {
   position: absolute;
-  top: -18%; left: 50%;
-  width: min(150vw, 900px);
-  aspect-ratio: 1;
-  transform: translateX(-50%);
-  background: radial-gradient(circle at 50% 50%,
-              rgba(214, 158, 86, 0.16) 0%,
-              rgba(138, 95, 43, 0.09) 38%,
-              rgba(11, 7, 5, 0) 68%);
-  pointer-events: none;
-  z-index: 0;
+  inset: 0;
+  z-index: -2;
+  /* Longhand on purpose. Putting image-set() inside the `background`
+     shorthand means an engine that does not know image-set() throws the
+     WHOLE declaration away — including the position, the size and the
+     background-color — and tiles the fallback at natural size instead.
+     Longhand fails to just the one line it should. */
+  background-color: var(--oud);
+  background-image: url("ground.jpg");
+  background-image: image-set(url("ground.webp") type("image/webp"),
+                              url("ground.jpg")  type("image/jpeg"));
+  background-position: 50% 38%;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-.hero > *:not(.ember) { position: relative; z-index: 1; }
+/* Two scrims. The first sinks the whole picture so type can live on it at
+   AA; the second is the light from the doorway falling low and to the left,
+   which is where the window stands in every render. A symmetrical glow
+   behind a centred logo is the one move every dark landing page makes and
+   the artwork never does it. */
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(64% 46% at 26% 74%,
+      rgba(240, 200, 137, 0.16) 0%,
+      rgba(214, 158, 86, 0.06) 42%,
+      rgba(11, 7, 5, 0) 74%),
+    linear-gradient(180deg,
+      rgba(11, 7, 5, 0.90) 0%,
+      rgba(11, 7, 5, 0.80) 34%,
+      rgba(11, 7, 5, 0.86) 72%,
+      rgba(23, 14, 6, 0.96) 100%);
+}
 
-.wordmark { margin: 0 auto; max-width: 19rem; }
+.hero-inner {
+  position: relative;
+  max-width: 74rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  row-gap: 0;
+}
+
+/* --- the door --- */
+
+.door {
+  grid-row: 1;
+  position: relative;
+  width: min(52vw, 200px);
+  aspect-ratio: 0.536;            /* a door is narrow and tall. A niche is not.
+                                     Matches door.jpg exactly so `cover` never crops. */
+}
+
+.door-photo {
+  position: absolute;
+  inset: 0;
+  clip-path: url(#ogee);
+  background: var(--oud);
+}
+
+.door-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 52% 46%; }
+
+/* The picture is brighter inside the arch than outside — that is what makes
+   this read as a lit opening rather than a photograph with a shape on top.
+   The falloff keeps the jambs dark so the gold line has something to sit on. */
+.door-glass {
+  position: absolute;
+  inset: 0;
+  clip-path: url(#ogee);
+  pointer-events: none;
+  background:
+    linear-gradient(90deg,
+      rgba(11, 7, 5, 0.80) 0%,
+      rgba(11, 7, 5, 0.16) 17%,
+      rgba(11, 7, 5, 0) 38%,
+      rgba(11, 7, 5, 0) 64%,
+      rgba(11, 7, 5, 0.20) 84%,
+      rgba(11, 7, 5, 0.82) 100%),
+    radial-gradient(72% 46% at 50% 62%,
+      rgba(11, 7, 5, 0) 0%,
+      rgba(11, 7, 5, 0.16) 60%,
+      rgba(11, 7, 5, 0.66) 100%),
+    linear-gradient(180deg,
+      rgba(11, 7, 5, 0.72) 0%,
+      rgba(11, 7, 5, 0.14) 22%,
+      rgba(11, 7, 5, 0) 58%,
+      rgba(11, 7, 5, 0.30) 100%);
+}
+
+.door-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.door-line path {
+  fill: none;
+  stroke: url(#goldArch);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+/* Light spilling out of the opening onto the floor in front of it. */
+.door::after {
+  content: "";
+  position: absolute;
+  left: -42%; right: -42%; bottom: -1px;
+  height: 46%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(50% 100% at 50% 100%,
+    rgba(240, 200, 137, 0.20) 0%,
+    rgba(214, 158, 86, 0.07) 44%,
+    rgba(11, 7, 5, 0) 76%);
+}
+
+/* --- the threshold: one line, under the door and under the step through --- */
+
+.threshold {
+  grid-row: 2;
+  width: 100%;
+  height: 1px;
+  margin: 0 0 clamp(1.1rem, 3.5vh, 2.25rem);
+  background: linear-gradient(90deg,
+    rgba(138, 95, 43, 0) 0%,
+    rgba(214, 158, 86, 0.42) 20%,
+    rgba(240, 200, 137, 0.58) 50%,
+    rgba(214, 158, 86, 0.42) 80%,
+    rgba(138, 95, 43, 0) 100%);
+}
+
+/* --- what is on the other side of it --- */
+
+.entry {
+  grid-row: 3;
+  width: 100%;
+  max-width: var(--measure);
+  text-align: center;
+}
+
+.wordmark { margin: 0 auto; max-width: min(100%, 300px); }
+.wordmark picture { display: block; }
 .wordmark img { width: 100%; }
 
+/* --- the interrupted line: the brand's divider --- */
+
 .rule {
-  border: 0;
-  height: 1px;
-  width: min(15rem, 62%);
-  margin: 1.75rem auto;
-  background: linear-gradient(90deg,
-              rgba(138, 95, 43, 0) 0%,
-              var(--gold) 50%,
-              rgba(138, 95, 43, 0) 100%);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: min(13rem, 88%);
+  margin: 0.9rem auto 0.85rem;
 }
+
+.rule-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+    rgba(138, 95, 43, 0) 0%, var(--gold) 100%);
+}
+.rule-line:last-child {
+  background: linear-gradient(90deg,
+    var(--gold) 0%, rgba(138, 95, 43, 0) 100%);
+}
+
+.rule-star {
+  flex: 0 0 auto;
+  width: 11px; height: 11px;
+  fill: url(#goldStar);
+}
+
+.rule--wide { width: min(17rem, 76%); margin: 1.6rem auto 1.9rem; }
+.rule--wide .rule-star { width: 13px; height: 13px; }
+
+/* --- the tagline ---------------------------------------------------
+   FILLED 2026-09-05: "Attar. Worn, not sprayed." — 25 characters, set
+   as letterspaced caps. The line it replaced is private and is recorded
+   only in 02-brand/TOKENS.md; it must never be set here again.
+
+   This file is the easy half. The retired line is also BURNED INTO THE
+   ARTWORK — seven of the nine unique masters carry it in gold caps, and
+   so does every social plate cut from them. Changing this stylesheet
+   fixes the page and nothing else. See README for the list. */
 
 .tagline {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(0.72rem, 3.2vw, 0.95rem);
+  font-size: clamp(0.6rem, 2.5vw, 0.76rem);
   text-transform: uppercase;
   letter-spacing: 0.3em;
   text-indent: 0.3em;             /* balance the trailing letter-space */
-  line-height: 1.9;
+  line-height: 2;
   color: var(--gold);
 }
 
 /* Break between sentences, never inside one. */
 .tagline span { white-space: nowrap; }
 
-/* ---------- countdown ---------- */
+/* ---------- countdown (rendered by site.js only when a date is set) ---------- */
 
 /* `display: flex` below outranks the UA rule for [hidden], so restore it. */
 .countdown[hidden] { display: none; }
@@ -126,24 +360,25 @@ img { max-width: 100%; height: auto; display: block; }
 .countdown {
   display: flex;
   justify-content: center;
-  gap: clamp(0.75rem, 4vw, 1.75rem);
-  margin: 3rem auto 0;
+  gap: clamp(0.7rem, 4vw, 1.6rem);
+  margin: 2.25rem auto 0;
 }
 
 .countdown .cell {
-  min-width: 3.75rem;
-  padding: 0.85rem 0.35rem;
-  border: 1px solid rgba(214, 158, 86, 0.22);
-  background: rgba(42, 26, 12, 0.45);
+  min-width: 3.6rem;
+  padding: 0.8rem 0.35rem;
+  border: 1px solid var(--hair);
+  background: rgba(11, 7, 5, 0.55);
+  backdrop-filter: blur(2px);
 }
 
 .countdown .n {
   display: block;
   font-family: var(--display);
-  font-size: clamp(1.35rem, 6.5vw, 1.9rem);
+  font-size: clamp(1.3rem, 6.5vw, 1.8rem);
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
-  background: var(--gold-grad);
+  background-image: var(--gold-grad);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -158,90 +393,195 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--muted);
 }
 
-/* ---------- capture ---------- */
+/* ===================================================================
+   THE STEP THROUGH
 
-.capture { margin: clamp(3rem, 11vh, 4.5rem) auto 0; max-width: var(--measure); }
+   Was a waitlist form until 2026-09-05. It is now one link to WhatsApp:
+   a page with no date and no product has nothing to mail a subscriber,
+   and the accounts exist, so it starts a conversation instead.
+   =================================================================== */
 
-/* No launch date yet: the countdown is absent, so close the gap it would fill. */
-.countdown[hidden] + .capture { margin-top: clamp(2.25rem, 6vh, 3rem); }
+.capture { margin: clamp(0.9rem, 3vh, 2.25rem) auto 0; }
 
 .capture h2 {
   margin: 0;
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(1.4rem, 6.5vw, 1.85rem);
-  letter-spacing: 0.02em;
+  font-size: clamp(1.3rem, 5.6vw, 1.6rem);
+  letter-spacing: 0.03em;
+  line-height: 1.3;
   color: var(--cream);
 }
 
 .capture-sub {
-  margin: 0.4rem 0 1.75rem;
+  margin: 0.3rem 0 1rem;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.94rem;
 }
 
-.field { display: flex; flex-direction: column; gap: 0.75rem; }
+/* --- the action ------------------------------------------------------
+   One link, not a form. It is a brass plate on a door: its weight comes
+   from the letterform and the hairline around it, because the mass on this
+   page belongs to the photograph and nowhere else.
 
-input[type="email"] {
-  width: 100%;
-  padding: 1rem 1.1rem;
-  font-family: inherit;
-  font-size: 1rem;                /* 16px — stops iOS zooming on focus */
-  color: var(--cream);
-  background: var(--oud);
-  border: 1px solid rgba(214, 158, 86, 0.28);
+   Sized as a real target — 52px minimum, which is above the 44px floor and
+   matches the height the input used to occupy, so the composition below the
+   tagline did not move when the waitlist came out. */
+
+.action-wrap { margin: 0; }
+.action { width: 100%; }          /* phone: the one action, full width */
+@media (min-width: 40rem) { .action { width: auto; } }
+
+.action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 54px;
+  padding: 0.9rem 2.1rem;
+  border: 1px solid rgba(214, 158, 86, 0.42);
   border-radius: 2px;
-  transition: border-color 0.2s ease;
+  background: rgba(42, 26, 12, 0.82);
+  text-decoration: none;
+  transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
-input[type="email"]::placeholder { color: var(--muted); }
-
-input[type="email"]:focus-visible {
-  outline: none;
-  border-color: var(--gold);
-  box-shadow: 0 0 0 1px rgba(214, 158, 86, 0.35);
-}
-
-button[type="submit"] {
-  padding: 1rem 1.5rem;
-  min-height: 48px;               /* comfortable thumb target */
+/* The gradient clips to the label's own box. It cannot clip to the plate's,
+   because the plate also has to carry the fill behind it. */
+.action > span {
   font-family: var(--display);
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   text-transform: uppercase;
-  letter-spacing: 0.2em;
-  text-indent: 0.2em;
-  color: var(--oud);
-  background: var(--gold-grad);
-  border: 0;
-  border-radius: 2px;
-  cursor: pointer;
-  transition: filter 0.2s ease;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;             /* balance the trailing letter-space */
+  background-image: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-button[type="submit"]:hover:not(:disabled) { filter: brightness(1.08); }
-button[type="submit"]:focus-visible { outline: 2px solid var(--gold-lit); outline-offset: 3px; }
-button[type="submit"]:disabled { filter: grayscale(0.55) brightness(0.65); cursor: not-allowed; }
-input:disabled { opacity: 0.55; cursor: not-allowed; }
+.action:hover { border-color: var(--gold); background: #3A2410; }
 
-.note { margin: 1rem 0 0; min-height: 1.4rem; font-size: 0.9rem; color: var(--gold); }
-.note.error { color: #E0A08A; }
+.action:focus-visible {
+  outline: 2px solid var(--gold-lit);
+  outline-offset: 2px;
+}
 
-.fineprint { margin: 1.5rem 0 0; font-size: 0.8rem; color: var(--muted); }
+.fineprint { margin: 1.25rem 0 0; font-size: 0.8rem; line-height: 1.6; color: var(--muted); }
 
-/* ---------- the vessel ---------- */
+/* ===================================================================
+   THE HOUSE
+   =================================================================== */
 
-.figure { padding: 0 var(--gutter); }
-
-.figure img {
+.house {
+  max-width: var(--measure);
   margin: 0 auto;
-  max-width: 26rem;
-  border: 1px solid rgba(214, 158, 86, 0.18);
+  padding: clamp(3.25rem, 10vh, 5.5rem) var(--gutter) clamp(2.25rem, 6vh, 3.25rem);
+  text-align: center;
 }
 
-/* ---------- promise ---------- */
+.eyebrow {
+  margin: 0 0 1.4rem;
+  font-family: var(--display);
+  font-size: 0.66rem;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  color: var(--muted);
+}
+
+.lede {
+  margin: 0 0 1.4rem;
+  font-family: var(--display);
+  font-size: clamp(1.15rem, 5vw, 1.5rem);
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  color: var(--cream);
+}
+
+.house .body { margin: 0; font-size: 1rem; }
+.house .muted { color: var(--muted); }
+
+/* ===================================================================
+   THREE PLATES ON ONE FLOOR
+
+   Every render is a still life standing on a ground plane with a
+   reflection under it. So these stand at their own heights on one shared
+   line, not in a grid of equal boxes, which is the one thing the pictures
+   are not.
+
+   Sizes: the ceiling used to be 300px, which was a decision I made and
+   then blamed on the source files. The masters are 1300-2000px and these
+   plates are cut at 620-800px wide, so the ceiling is now the layout.
+   =================================================================== */
+
+.plates {
+  max-width: 68rem;
+  margin: 0 auto;
+  padding: clamp(0.5rem, 3vh, 1.5rem) var(--gutter) 0;
+}
+
+.plate-row {
+  list-style: none;
+  margin: 0 auto clamp(4.5rem, 9vh, 5.5rem);
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(3.5rem, 8vh, 4.5rem);
+}
+
+.plate { position: relative; margin: 0; }
+
+/* Stacked on a phone: one picture at a time, large, all in the same column.
+   Sized by WIDTH here, not height — three plates of different aspect sized by
+   height gives the tallest crop the narrowest column, which is backwards when
+   there is only one of them on screen. Three 90px stamps in a row is not a
+   gallery either, and 400px is the width most of this traffic has. */
+.plate img {
+  width: min(72vw, 300px);
+  height: auto;
+  max-width: 100%;
+  border: 1px solid var(--hair-soft);
+  border-bottom: 0;               /* the floor is the row's own line */
+}
+
+/* each plate carries its own floor line while stacked */
+.plate::before {
+  content: "";
+  position: absolute;
+  left: -12%; right: -12%; bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    rgba(138, 95, 43, 0) 0%,
+    rgba(214, 158, 86, 0.42) 18%,
+    rgba(240, 200, 137, 0.52) 50%,
+    rgba(214, 158, 86, 0.42) 82%,
+    rgba(138, 95, 43, 0) 100%);
+}
+
+/* Captions hang below the floor line, in each picture's own column. */
+.caption {
+  position: absolute;
+  left: -12%; right: -12%;
+  top: calc(100% + 0.85rem);
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(0.6rem, 2.2vw, 0.67rem);
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--muted);
+}
+
+/* ===================================================================
+   THE RESOLVE
+   =================================================================== */
 
 .promise {
-  padding: clamp(3rem, 10vh, 5rem) var(--gutter);
+  padding: clamp(1.5rem, 6vh, 3rem) var(--gutter) clamp(3.5rem, 10vh, 5.5rem);
   max-width: var(--measure);
   margin: 0 auto;
   text-align: center;
@@ -250,84 +590,180 @@ input:disabled { opacity: 0.55; cursor: not-allowed; }
 .display {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(1.5rem, 7.5vw, 2.35rem);
+  font-size: clamp(1.4rem, 6.8vw, 2.2rem);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   text-indent: 0.12em;
-  line-height: 1.35;
-  background: var(--gold-grad);
+  line-height: 1.4;
+  background-image: var(--gold-grad);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.promise .body { margin: 0 0 1rem; font-size: 1.05rem; }
+.promise .body { margin: 0 0 0.9rem; font-size: 1.05rem; }
 .promise .muted { color: var(--muted); font-size: 0.95rem; }
 
-/* ---------- footer ---------- */
+/* ===================================================================
+   FOOTER — where the house is, said once and quietly
+   =================================================================== */
 
 footer {
-  padding: clamp(2.5rem, 8vh, 4rem) var(--gutter) calc(3rem + env(safe-area-inset-bottom));
+  padding: clamp(2.5rem, 8vh, 3.75rem) var(--gutter)
+           calc(2.75rem + env(safe-area-inset-bottom));
   text-align: center;
-  border-top: 1px solid rgba(214, 158, 86, 0.12);
+  border-top: 1px solid var(--hair-soft);
 }
 
-footer .mark { width: 3.25rem; margin: 0 auto 1.25rem; opacity: 0.9; }
+footer .mark { width: 2.9rem; margin: 0 auto 1.3rem; opacity: 0.92; }
 
-footer p {
-  margin: 0;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+.footer-line {
+  margin: 0 0 1.15rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
-/* ---------- elsewhere ----------
-   Two quiet marks at the foot. Held back on purpose: flat gold at reduced
-   opacity, no labels, no chips. At 20px the gold-grad ramp resolves to a
-   single tone anyway, and .tagline already sets flat gold on small type, so
-   this stays inside the existing language rather than inventing a treatment.
-   Kept small and self-contained: the page is being redesigned and this block
-   should be trivial to move or replace. */
-
-.elsewhere {
+.where {
   display: flex;
-  justify-content: center;
-  gap: 0.5rem;                    /* 44px targets already carry their own air */
-  margin-top: 1.75rem;
-}
-
-.elsewhere a {
-  display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;                    /* 44px target; the mark itself stays 20px */
-  height: 44px;
+  gap: 0.85rem;
+  margin: 0;
+}
+
+.where a {
+  font-family: var(--display);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
   color: var(--gold);
-  opacity: 0.7;
-  transition: opacity 0.2s ease;
+  text-decoration: none;
+  padding: 0.35rem 0.1rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.elsewhere a:hover,
-.elsewhere a:focus-visible { opacity: 1; }
+.where a:hover { color: var(--gold-lit); border-bottom-color: rgba(240, 200, 137, 0.5); }
+.where a:focus-visible { outline: 2px solid var(--gold-lit); outline-offset: 3px; }
 
-.elsewhere a:focus-visible {
-  outline: 1px solid var(--gold);
-  outline-offset: 2px;
-}
+.where .sep { flex: 0 0 auto; width: 8px; height: 8px; fill: var(--gold-deep); }
 
-.elsewhere svg { width: 20px; height: 20px; }
-
-/* ---------- wider than a phone ---------- */
+/* ===================================================================
+   WIDER THAN A PHONE
+   =================================================================== */
 
 @media (min-width: 40rem) {
-  :root { --gutter: 40px; }
-  .wordmark { max-width: 26rem; }
-  .field { flex-direction: row; }
-  .field input[type="email"] { flex: 1; }
-  .field button[type="submit"] { flex: 0 0 auto; }
+  :root { --gutter: 36px; }
+
+  .door { width: min(40vw, 296px); }
+
+  /* Full-bleed tap target on a phone; a plate you press at any width above. */
+  .action { padding: 0.9rem 2.6rem; }
+  .rule { width: min(15rem, 80%); }
+  .wordmark { max-width: min(100%, 420px); }
+  .tagline { font-size: 0.74rem; }
+
+  /* The three plates come up onto one floor, at their own heights. */
+  .plate-row {
+    flex-direction: row;
+    align-items: flex-end;        /* the floor */
+    justify-content: center;
+    gap: clamp(1.25rem, 3.4vw, 2.5rem);
+    width: fit-content;
+    max-width: 100%;
+    position: relative;
+    margin-inline: auto;
+  }
+  .plate::before { display: none; }
+
+  .plate-row::after {
+    content: "";
+    position: absolute;
+    left: -4%; right: -4%; bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg,
+      rgba(138, 95, 43, 0) 0%,
+      rgba(214, 158, 86, 0.52) 14%,
+      rgba(240, 200, 137, 0.66) 50%,
+      rgba(214, 158, 86, 0.52) 86%,
+      rgba(138, 95, 43, 0) 100%);
+  }
+
+  /* On one floor: sized by HEIGHT so they stand at their own scale against a
+     shared baseline, which is how every one of these renders is composed. */
+  .plate img     { width: auto; height: auto; }
+  .plate--view   img { height: min(46vw, 540px); }
+  .plate--vessel img { height: min(35vw, 410px); }
+  .plate--light  img { height: min(37vw, 432px); }
+
+  .caption { left: 0; right: 0; }
+
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; }
+/* ===================================================================
+   DESKTOP — the door and the step through it stand on the same line
+
+   Two columns bottom-aligned on one row, with the threshold as a second
+   row spanning both. Nothing is centred under a floating logo; the page
+   has a floor and everything on it stands on that floor.
+   =================================================================== */
+
+@media (min-width: 64rem) {
+  .hero { padding-block: clamp(2.5rem, 7vh, 4.5rem) clamp(3rem, 9vh, 5rem); }
+
+  .hero-inner {
+    grid-template-columns: auto minmax(20rem, 1fr);
+    column-gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: end;
+    justify-items: stretch;
+  }
+
+  .door   { grid-column: 1; grid-row: 1; width: min(29vw, 372px); }
+  .entry  { grid-column: 2; grid-row: 1; max-width: 34rem; text-align: left;
+            padding-bottom: clamp(0.5rem, 2vh, 1.25rem); }
+  .threshold { grid-column: 1 / -1; grid-row: 2; margin-bottom: 0; }
+
+  .wordmark { margin-left: 0; max-width: min(100%, 30rem); }
+  .rule     { margin-left: 0; width: 11rem; }
+  .tagline  { text-align: left; }
+  .capture  { margin-top: clamp(1.5rem, 4vh, 2.25rem); }
+  .fineprint { max-width: 26rem; }
+
+  .house, .promise { max-width: 36rem; }
+}
+
+@media (min-width: 80rem) {
+  .door { width: 392px; }
+}
+
+/* ===================================================================
+   MOTION — one sequence, once, on load: the door opens.
+   Written so the default state is VISIBLE and only the no-preference
+   branch hides then reveals. A reduced-motion visitor can never be left
+   looking at an element stuck at zero opacity.
+   =================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes mz-open { from { opacity: 0; transform: scale(0.985); } to { opacity: 1; transform: none; } }
+  @keyframes mz-draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+  @keyframes mz-rise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+  @keyframes mz-glow { from { opacity: 0; } to { opacity: 1; } }
+
+  .door-photo { animation: mz-open 1000ms cubic-bezier(.22,.61,.36,1) both; }
+
+  .door-line path {
+    stroke-dasharray: 100;
+    animation: mz-draw 1200ms cubic-bezier(.4,0,.2,1) 140ms both;
+  }
+
+  .door::after   { animation: mz-glow 900ms ease-out 900ms both; }
+  .threshold     { animation: mz-rise 700ms ease-out 860ms both; }
+  .wordmark      { animation: mz-rise 800ms cubic-bezier(.22,.61,.36,1) 560ms both; }
+  .entry .rule   { animation: mz-rise 700ms ease-out 720ms both; }
+  .entry .tagline{ animation: mz-rise 700ms ease-out 840ms both; }
+  .capture       { animation: mz-rise 750ms ease-out 980ms both; }
 }

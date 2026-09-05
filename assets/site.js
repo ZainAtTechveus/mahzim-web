@@ -91,6 +91,17 @@
   var note = $('form-note');
   var cap = CFG.capture || {};
 
+  /* The waitlist was removed from the page on 2026-09-05 — WhatsApp replaced
+     it as the single action. Everything below is therefore dormant, not
+     deleted: the countdown and the preview bar above still run, and 03-web/
+     has its own copy of this file that is untouched.
+
+     Without this guard the block below dereferences a null form on every
+     load and throws. It is one branch, and it is the difference between
+     "dormant" and "broken". Delete the whole capture section deliberately,
+     with config.js, when someone decides the waitlist is not coming back. */
+  if (!form || !input || !button || !note) return;
+
   function say(msg, isError) {
     note.textContent = msg;
     note.className = isError ? 'note error' : 'note';

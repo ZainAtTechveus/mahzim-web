@@ -5,109 +5,261 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>mahzim — a heritage attar house</title>
 
-<meta name="description" content="A heritage attar house in Lahore. Attar. Worn, not sprayed.">
-<meta name="theme-color" content="#170E06">
+<!-- NOTE 2026-09-05: the description and og:description used to carry the
+     retired private tagline. It is recorded once, in 02-brand/TOKENS.md, and
+     is deliberately NOT quoted here — HTML comments ship, and View Source is
+     public. The customer-facing line is "Attar. Worn, not sprayed." -->
+<meta name="description" content="A heritage attar house in Lahore. Attar, worn not sprayed.">
+<meta name="theme-color" content="#0B0705">
 <!-- Held back from search until the handles are secured. Remove to index. -->
 <meta name="robots" content="noindex, nofollow">
 
 <meta property="og:type" content="website">
 <meta property="og:title" content="mahzim">
-<meta property="og:description" content="Attar. Worn, not sprayed.">
+<meta property="og:description" content="A heritage attar house in Lahore. Opening soon.">
+<!-- og.jpg was rebuilt 2026-09-05: the shipped one had the retired line
+     burned into the artwork, and the OG image is the one thing every share
+     preview shows. -->
 <meta property="og:image" content="assets/og.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/wordmark.png">
+<!-- The two things above the fold. WebP is roughly half the JPEG/PNG and is
+     pixel-identical at 3x zoom; the type attribute makes a browser without
+     WebP skip the preload rather than fetch something it cannot use. -->
+<link rel="preload" as="image" href="assets/door.webp" type="image/webp">
+<link rel="preload" as="image" href="assets/wordmark.webp" type="image/webp">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
+
+<!-- ================================================================
+     Brand sprite. Two shapes carry the whole system:
+
+       #star  the four-point sparkle. In the artwork it is punctuation,
+              not decoration — it sits above the a, below the swash, and
+              it breaks the centre of every rule. Used at three sizes here.
+
+       #ogee  the arch. Three of the ten approved renders are built around
+              a pointed niche, and the signup line is "be first through
+              the door." So the page is a door.
+
+              It is drawn rather than photographed so the edge stays sharp
+              at any width — but it is never EMPTY. It is an aperture: a
+              photograph is clipped to it and lit through it. An outlined
+              arch with nothing inside is a hole, and that is what the
+              first pass of this redesign shipped.
+     ================================================================ -->
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <!-- Gold is never flat (TOKENS.md). The head of the arch silhouettes
+         against the light and catches it; the jambs fall into the dark of
+         the room, and the base picks the threshold up again. -->
+    <linearGradient id="goldArch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#F0C889"/>
+      <stop offset="0.20" stop-color="#D69E56"/>
+      <stop offset="0.58" stop-color="#8A5F2B"/>
+      <stop offset="0.88" stop-color="#B8853F"/>
+      <stop offset="1"    stop-color="#D69E56"/>
+    </linearGradient>
+
+    <linearGradient id="goldStar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#8A5F2B"/>
+      <stop offset="0.30" stop-color="#D69E56"/>
+      <stop offset="0.52" stop-color="#F0C889"/>
+      <stop offset="1"    stop-color="#8A5F2B"/>
+    </linearGradient>
+
+    <symbol id="star" viewBox="0 0 24 24">
+      <path d="M12 0c.4 7 4.6 11.6 12 12-7.4.4-11.6 5-12 12-.4-7-4.6-11.6-12-12
+               7.4-.4 11.6-5 12-12Z"/>
+    </symbol>
+
+    <!-- The ogee, in a 0..1 box so the same numbers clip the photograph and
+         stroke the line, and the two can never drift out of register. -->
+    <clipPath id="ogee" clipPathUnits="objectBoundingBox">
+      <path d="M0,1 L0,.46
+               C0,.27 .13,.13 .32,.13
+               C.425,.13 .472,.048 .5,0
+               C.528,.048 .575,.13 .68,.13
+               C.87,.13 1,.27 1,.46
+               L1,1 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
 <div id="preview-bar" hidden>Internal preview — the list is not yet open.</div>
 
 <main>
-  <!-- ---------- hero ---------- -->
+
+  <!-- ================= the hero: a room, and a lit door in it ================= -->
   <section class="hero">
-    <div class="ember" aria-hidden="true"></div>
+    <div class="hero-photo" aria-hidden="true"></div>
 
-    <h1 class="wordmark">
-      <img src="assets/wordmark.png" width="1200" height="348"
-           alt="mahzim, set in gold, with a four-point star above the a and a calligraphic swash beneath the h and z.">
-    </h1>
+    <div class="hero-inner">
 
-    <hr class="rule" aria-hidden="true">
-
-    <p class="tagline"><span>Attar.</span> <span>Worn, not sprayed.</span></p>
-
-    <!-- countdown renders only when a launch date is configured -->
-    <div id="countdown" class="countdown" hidden aria-live="polite"></div>
-
-    <!-- ---------- capture ---------- -->
-    <section class="capture" aria-labelledby="join">
-      <h2 id="join">Join the list.</h2>
-      <p class="capture-sub">Be first through the door.</p>
-
-      <form id="waitlist" novalidate>
-        <div class="field">
-          <label class="visually-hidden" for="email">Email address</label>
-          <input id="email" name="email" type="email" inputmode="email"
-                 autocomplete="email" spellcheck="false"
-                 placeholder="Email address" required>
-          <button id="submit" type="submit">First access</button>
+      <!-- the door. The picture is the point; the gold line is the edge of it. -->
+      <div class="door">
+        <div class="door-photo">
+          <picture>
+            <source srcset="assets/door.webp" type="image/webp">
+            <img src="assets/door.jpg" width="900" height="1680" fetchpriority="high"
+                 alt="A black faceted bottle with a gold collar and the gold m monogram, lit on dark marble, a pierced brass incense burner smoking behind it.">
+          </picture>
         </div>
-        <p id="form-note" class="note" role="status" aria-live="polite"></p>
-      </form>
+        <div class="door-glass" aria-hidden="true"></div>
+        <svg class="door-line" viewBox="0 0 1 1" preserveAspectRatio="none"
+             aria-hidden="true" focusable="false">
+          <path pathLength="100" vector-effect="non-scaling-stroke"
+                d="M0,1 L0,.46
+                   C0,.27 .13,.13 .32,.13
+                   C.425,.13 .472,.048 .5,0
+                   C.528,.048 .575,.13 .68,.13
+                   C.87,.13 1,.27 1,.46
+                   L1,1"/>
+        </svg>
+      </div>
 
-      <p class="fineprint">Your email, and nothing else. One note when we open.</p>
-    </section>
+      <!-- one line under the door and under the step through it -->
+      <div class="threshold" role="presentation"></div>
+
+      <div class="entry">
+        <h1 class="wordmark">
+          <picture>
+            <source srcset="assets/wordmark.webp" type="image/webp">
+            <img src="assets/wordmark.png" width="1200" height="348"
+                 alt="mahzim, set in gold, with a four-point star above the a and a calligraphic swash beneath the h and z.">
+          </picture>
+        </h1>
+
+        <div class="rule" role="presentation">
+          <span class="rule-line"></span>
+          <svg class="rule-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#star"/></svg>
+          <span class="rule-line"></span>
+        </div>
+
+        <!-- ============================================================
+             TAGLINE. Final, 2026-09-05. Copy owner: Pepper.
+             The reasoning is in 02-brand/TOKENS.md; the retired line it
+             replaces is recorded there under a do-not-publish block.
+             Do not set "A SCENT THAT REMAINS." in this slot as well —
+             that is the display headline. Tagline = what it is,
+             headline = what it does.
+             ============================================================ -->
+        <p class="tagline"><span>Attar.</span> <span>Worn, not sprayed.</span></p>
+
+        <!-- countdown renders only when a launch date is configured -->
+        <div id="countdown" class="countdown" hidden aria-live="polite"></div>
+
+        <!-- ============================================================
+             THE ACTION. The waitlist was removed 2026-09-05 on Zain's
+             instruction: it asked a stranger to wait for something with no
+             date and no product, and banked an address nobody had a plan to
+             mail. WhatsApp is the shop and Instagram is the window, so the
+             page starts a conversation instead of collecting one.
+
+             Copy below is a first draft in Pepper's register (house,
+             counter, door) and needs her sign-off. It deliberately claims
+             no product fact — no notes, no price, no ship date — because
+             there is not a fragrance yet, only a name.
+
+             The form hooks site.js still looks for (#waitlist, #email,
+             #submit, #form-note) are gone from this page. See README.
+             ============================================================ -->
+        <section class="capture" aria-labelledby="knock">
+          <h2 id="knock">Come to the counter.</h2>
+          <p class="capture-sub">The house answers on WhatsApp.</p>
+
+          <p class="action-wrap">
+            <a class="action" href="https://wa.me/923390075856"
+               target="_blank" rel="noopener noreferrer">
+              <span>Open WhatsApp</span>
+            </a>
+          </p>
+
+          <p class="fineprint">A message, and an answer from a person. Nothing else.</p>
+        </section>
+      </div>
+
+    </div>
   </section>
 
-  <!-- ---------- the vessel ---------- -->
-  <section class="figure">
-    <img src="assets/bottle.jpg" width="1070" height="1390" loading="lazy" decoding="async"
-         alt="A black faceted perfume bottle with a gold collar and gold m monogram, resting on oud wood in warm smoke.">
+  <!-- ================= the house ================= -->
+  <section class="house">
+    <p class="eyebrow">The house</p>
+    <p class="lede">An attar house in Lahore.</p>
+    <p class="body muted">Oil, never alcohol. It is worn on the skin rather than
+       sprayed into the air. It settles, warms, and stays.</p>
   </section>
 
+  <!-- ================= three plates on one floor =================
+       Cut from the masters at 620-800px wide and shown at up to 540px tall.
+       The previous pass capped them at 300 and called that the source
+       resolution; it was the layout. Three different keys on purpose —
+       dusk, noir, daylight — because the house has all three and a page
+       that only shows one of them is showing a third of the brand. -->
+  <section class="plates" aria-label="The house, in three pictures">
+    <ul class="plate-row">
+      <li class="plate plate--view">
+        <picture>
+          <source srcset="assets/plate-view.webp" type="image/webp">
+          <img src="assets/plate-view.jpg" width="620" height="1405" loading="lazy" decoding="async"
+               alt="A carved stone arch opening onto Lahore at dusk, a minaret and domes beyond, a brass incense burner smoking on the sill.">
+        </picture>
+        <p class="caption">Lahore, at dusk</p>
+      </li>
+      <li class="plate plate--vessel">
+        <picture>
+          <source srcset="assets/plate-vessel.webp" type="image/webp">
+          <img src="assets/plate-vessel.jpg" width="764" height="1280" loading="lazy" decoding="async"
+               alt="The black bottle on split oud wood against bronze silk, a plume of incense smoke rising behind it.">
+        </picture>
+        <p class="caption">The vessel</p>
+      </li>
+      <li class="plate plate--light">
+        <picture>
+          <source srcset="assets/plate-light.webp" type="image/webp">
+          <img src="assets/plate-light.jpg" width="800" height="1380" loading="lazy" decoding="async"
+               alt="The same bottle in clear glass on a marble plinth in daylight, a cream silk sash behind it.">
+        </picture>
+        <p class="caption">The light side</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================= the resolve ================= -->
   <section class="promise">
     <p class="display">A scent that remains.</p>
-    <hr class="rule" aria-hidden="true">
-    <p class="body">
-      A house built on one idea:<br>
-      that two forms can become one.
-    </p>
+
+    <div class="rule rule--wide" role="presentation">
+      <span class="rule-line"></span>
+      <svg class="rule-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#star"/></svg>
+      <span class="rule-line"></span>
+    </div>
+
+    <!-- REMOVED 2026-09-05: "A house built on one idea: that two forms can
+         become one." That is the retired private line with the specifics
+         filed off — same story, same two people, just abstracted. If the
+         line itself is not customer-facing, a paraphrase of it is not
+         either. Nothing replaces it: there is no public fact to put here
+         that the section above does not already say, and inventing a
+         product claim for a house with no product yet is worse than a
+         short section. -->
     <p class="body muted">Not a fragrance yet. A name first.</p>
-    <p class="body muted">Attar and parfum.</p>
   </section>
+
 </main>
 
 <footer>
-  <img class="mark" src="assets/mark.png" width="760" height="778" loading="lazy" decoding="async" alt="">
-  <p>A heritage attar house.</p>
-
-  <!-- Two marks so the page is not a dead end. Icons are inline SVG: the page
-       makes zero third-party requests and these must not be the exception.
-       Facebook is deliberately absent - see README. -->
-  <nav class="elsewhere" aria-label="Mahzim elsewhere">
-    <a href="https://www.instagram.com/mahzim.official/"
-       target="_blank" rel="noopener" aria-label="Mahzim on Instagram">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-           aria-hidden="true" focusable="false">
-        <rect x="2.75" y="2.75" width="18.5" height="18.5" rx="5.25"></rect>
-        <circle cx="12" cy="12" r="4.25"></circle>
-        <circle cx="17.4" cy="6.6" r="1.15" fill="currentColor" stroke="none"></circle>
-      </svg>
-    </a>
-
-    <a href="https://wa.me/923390075856"
-       target="_blank" rel="noopener" aria-label="Mahzim on WhatsApp">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
-           stroke-linecap="round" stroke-linejoin="round"
-           aria-hidden="true" focusable="false">
-        <path d="M20.6 11.9a8.6 8.6 0 0 1-12.8 7.5l-4.4 1.3 1.3-4.3A8.6 8.6 0 1 1 20.6 11.9Z"></path>
-        <path d="M9 8.6a.8.8 0 0 1 1 .4l.7 1.4a.7.7 0 0 1-.1.8l-.5.5a.5.5 0 0 0-.1.6 6.6 6.6 0 0 0 2.2 2.2.5.5 0 0 0 .6-.1l.5-.5a.7.7 0 0 1 .8-.1l1.4.7a.8.8 0 0 1 .4 1 2 2 0 0 1-2 1.2A7.7 7.7 0 0 1 7.8 10.6a2 2 0 0 1 1.2-2Z"></path>
-      </svg>
-    </a>
-  </nav>
+  <img class="mark" src="assets/monogram.png" width="330" height="360" loading="lazy" decoding="async" alt="">
+  <p class="footer-line">A heritage attar house. Lahore.</p>
+  <p class="where">
+    <a href="https://www.instagram.com/mahzim.official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <svg class="sep" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#star"/></svg>
+    <a href="https://wa.me/923390075856" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </p>
 </footer>
 
 <script src="config.js"></script>
