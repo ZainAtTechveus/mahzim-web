@@ -32,10 +32,18 @@ window.MAHZIM = {
      a static host, and the list is retrievable from the destination mailbox.
      To move the list to a different mailbox, change the address in the URL
      below and click the activation link FormSubmit sends to it once.
+
+     Destination is mahzim.pk@gmail.com, the brand account. Set 2026-09-05,
+     replacing a mail.tm disposable mailbox -- those are reclaimed when idle,
+     and a lapsed one drops signups with no error at all.
+     ONE MANUAL STEP, STILL OUTSTANDING: FormSubmit binds an endpoint to its
+     destination on first use. The first submission after this change sends an
+     activation email to that address which must be clicked once. Until then
+     nothing is delivered. Send that first submission yourself.
      --------------------------------------------------------------- */
   capture: {
     provider: "formsubmit",
-    formsubmit: { url: "https://formsubmit.co/ajax/mahzimlistebe8d7@emalupe.com" },
+    formsubmit: { url: "https://formsubmit.co/ajax/mahzim.pk@gmail.com" },
     mailchimp: { u: null, id: null, dc: null },
     endpoint: { url: null }
   },

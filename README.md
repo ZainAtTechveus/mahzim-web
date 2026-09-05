@@ -10,18 +10,49 @@ campaign** document on TEC-1 and is not rewritten here.
 ## Taking it live
 
 Everything that needs a decision lives in `config.js`. Nothing else should change.
+`launchISO` and `plausibleDomain` are the two still unset.
 
 | Field | Now | To go live |
 |---|---|---|
 | `launchISO` | `null` | The public launch moment, ISO 8601 with offset — `"2026-10-15T09:00:00+04:00"`. The countdown appears; until then the page states no date it has not been given. |
-| `capture.provider` | `null` | `"mailchimp"` or `"endpoint"`. See below. |
+| `capture.provider` | `"formsubmit"` | **Live.** Signups go to the address in `capture.formsubmit.url`. See below. |
 | `plausibleDomain` | `null` | The live host, to switch on cookieless pageview analytics. |
-| `preview` | `true` | `false` — removes the internal-preview bar. |
+| `preview` | `false` | Already off. Set `true` to put the internal-preview bar back. |
 
 ### Email capture
 
 The form is deliberately **disabled while `capture.provider` is `null`**. It will
 not accept an address it cannot store.
+
+**Live provider: FormSubmit.** Signups are delivered to **mahzim.pk@gmail.com**,
+the Mahzim brand account:
+
+```
+capture.formsubmit.url = "https://formsubmit.co/ajax/mahzim.pk@gmail.com"
+```
+
+Set 2026-09-05, replacing a mail.tm disposable mailbox. Disposable mailboxes are
+reclaimed once they go idle, and a lapsed one drops signups with no error —
+the form still says "You are on the list" and nothing arrives. Nobody would
+notice until they went looking and found an empty list.
+
+**One manual step, and it is still outstanding.** FormSubmit binds an endpoint to
+its destination the first time it is used. The first submission after this change
+sends an activation email to mahzim.pk@gmail.com — **click the link in it once**
+and the endpoint is live for good. Until that click, submissions are accepted by
+the page and not delivered. Send that first submission yourself, before any
+traffic is driven here, so the activation is triggered by a test and not by the
+first real visitor.
+
+Attribution fields carry over unchanged. Nothing else moves.
+
+*Worth doing after activation:* FormSubmit also issues a random hashed endpoint,
+`https://formsubmit.co/ajax/<hash>`, which does the same job without putting the
+address in a page anyone can read. The hash arrives with the activation email.
+Swapping the URL for it is a one-line change in `config.js` and keeps the brand
+inbox off a scrapeable public page.
+
+The two providers below are wired but not in use.
 
 **Mailchimp** (no API key, nothing secret in the page). Open the audience's
 embedded-form code and read its action URL:
@@ -50,6 +81,26 @@ https://<host>/?utm_source=instagram&utm_medium=social&utm_campaign=coming-soon&
 
 First touch is stored for the session and travels with the signup, so waitlist
 growth is attributable to the post that produced it.
+
+## Elsewhere
+
+The foot of the page carries two marks, Instagram and WhatsApp, so a visitor who
+has joined the list has somewhere to go instead of a dead end.
+
+| | |
+|---|---|
+| Instagram | https://www.instagram.com/mahzim.official/ |
+| WhatsApp | https://wa.me/923390075856 |
+
+Icons are **inline SVG**. The page makes no third-party requests on load and an
+icon font or a CDN sprite would have been the one exception — so they are drawn
+in the markup.
+
+**Facebook is deliberately absent.** The Page exists (id `61594102680802`) and it
+matters — Instagram Business, the catalogue and the ad account all chain off it —
+but it is plumbing, not a destination. Nobody browses a fragrance house on
+Facebook. A third mark would cost restraint and buy nothing. Add it only if the
+Page ever becomes somewhere worth sending a person.
 
 ## Custom domain
 

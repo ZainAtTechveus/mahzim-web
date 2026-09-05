@@ -282,6 +282,42 @@ footer p {
   color: var(--muted);
 }
 
+/* ---------- elsewhere ----------
+   Two quiet marks at the foot. Held back on purpose: flat gold at reduced
+   opacity, no labels, no chips. At 20px the gold-grad ramp resolves to a
+   single tone anyway, and .tagline already sets flat gold on small type, so
+   this stays inside the existing language rather than inventing a treatment.
+   Kept small and self-contained: the page is being redesigned and this block
+   should be trivial to move or replace. */
+
+.elsewhere {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;                    /* 44px targets already carry their own air */
+  margin-top: 1.75rem;
+}
+
+.elsewhere a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;                    /* 44px target; the mark itself stays 20px */
+  height: 44px;
+  color: var(--gold);
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.elsewhere a:hover,
+.elsewhere a:focus-visible { opacity: 1; }
+
+.elsewhere a:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.elsewhere svg { width: 20px; height: 20px; }
+
 /* ---------- wider than a phone ---------- */
 
 @media (min-width: 40rem) {
