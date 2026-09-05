@@ -1,6 +1,24 @@
-/* mahzim — built from Ventures/Mahzim/02-brand/TOKENS.md (locked 2026-08-30).
-   Mobile-first. Gold is never flat: every gold surface here is a gradient
-   running --gold-deep -> --gold-lit -> --gold, as the artwork does. */
+/* ===================================================================
+   mahzim — built from Ventures/Mahzim/02-brand/TOKENS.md (locked 2026-08-30).
+
+   Two ideas hold the page together, and both are taken off the artwork
+   rather than out of a document:
+
+   1. THE ARCH. Three of the ten approved renders are composed around a
+      pointed niche, and the signup line is "be first through the door."
+      So the page is a door. It is drawn, not photographed, so it is
+      sharp at any width and costs nothing to download.
+
+   2. THE INTERRUPTED LINE. Every rule in the artwork is a hairline
+      broken at its centre by the four-point sparkle. That is the
+      brand's divider, and it appears here three times, at three sizes.
+
+   Light enters low and from one side, as it does in every render.
+   Nothing on this page is lit from behind and centred.
+
+   Mobile-first. Gold is never flat: every gold surface is a gradient
+   running --gold-deep -> --gold -> --gold-lit -> --gold-deep.
+   =================================================================== */
 
 :root {
   --oud:       #0B0705;
@@ -12,16 +30,26 @@
   --cream:     #EFE3D0;
   --muted:     #9C8B76;
 
-  /* Gold is never flat (TOKENS.md). This is the stroke ramp the artwork uses:
-     shadowed edge, a lit band across the middle, back down to brand gold. */
+  /* Gold is never flat (TOKENS.md): the stroke ramp the artwork uses. */
   --gold-grad: linear-gradient(180deg,
                var(--gold-deep) 0%, var(--gold) 26%, var(--gold-lit) 50%,
                var(--gold) 74%, var(--gold-deep) 100%);
 
-  --display: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua",
-             "Times New Roman", serif;
-  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
-          Arial, sans-serif;
+  /* Hairlines, in one place so every rule on the page matches. */
+  --hair:      rgba(214, 158, 86, 0.22);
+  --hair-soft: rgba(214, 158, 86, 0.13);
+
+  /* TYPE — two families, three roles.
+     Display: high-contrast serif, all caps, wide tracking (TOKENS.md).
+     Led by Didot and Bodoni because the wordmark's tagline is set in an
+     inscriptional serif; the chain stays inside that category on every
+     platform rather than falling to a system default halfway down.
+     Body: humanist sans, generous leading, never bold. */
+  --display: Didot, "Bodoni 72", "Bodoni MT", "Playfair Display",
+             "Iowan Old Style", "Palatino Linotype", Palatino,
+             "Times New Roman", Times, serif;
+  --body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
 
   --gutter: 24px;
   --measure: 34rem;
@@ -37,7 +65,7 @@ body {
   color: var(--cream);
   font-family: var(--body);
   font-size: 16px;
-  line-height: 1.7;
+  line-height: 1.75;
   font-weight: 400;               /* tokens: body is never bold */
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -45,15 +73,24 @@ body {
 
 img { max-width: 100%; height: auto; display: block; }
 
+/* The sprite carries #star and #ogee. It must occupy nothing. */
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
 .visually-hidden {
   position: absolute; width: 1px; height: 1px;
   margin: -1px; padding: 0; overflow: hidden;
   clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
 }
 
+::selection { background: rgba(214, 158, 86, 0.28); color: var(--cream); }
+
+a { color: inherit; }
+
 /* ---------- preview bar ---------- */
 
 #preview-bar {
+  position: relative;
+  z-index: 3;
   background: var(--ember);
   color: var(--muted);
   font-size: 0.75rem;
@@ -61,64 +98,166 @@ img { max-width: 100%; height: auto; display: block; }
   text-transform: uppercase;
   text-align: center;
   padding: 0.65rem var(--gutter);
-  border-bottom: 1px solid rgba(214, 158, 86, 0.18);
+  border-bottom: 1px solid var(--hair-soft);
 }
 
-/* ---------- hero ---------- */
+/* ===================================================================
+   THE DOOR
+   =================================================================== */
 
 .hero {
   position: relative;
-  padding: clamp(3.5rem, 14vh, 7rem) var(--gutter) clamp(3rem, 10vh, 5rem);
+  padding: clamp(2.5rem, 8vh, 5rem) var(--gutter) clamp(3rem, 9vh, 5rem);
   text-align: center;
   overflow: hidden;
 }
 
-/* the single ornament: an ember glow behind the mark, drawn not photographed */
-.ember {
+/* The room light. Low and to the left, where the window stands in the
+   renders, with a second faint bloom high right off the curtain.
+   Deliberately off-axis — a symmetrical glow behind a logo is the one
+   move every dark landing page makes, and the artwork never does it. */
+.dusk {
   position: absolute;
-  top: -18%; left: 50%;
-  width: min(150vw, 900px);
-  aspect-ratio: 1;
-  transform: translateX(-50%);
-  background: radial-gradient(circle at 50% 50%,
-              rgba(214, 158, 86, 0.16) 0%,
-              rgba(138, 95, 43, 0.09) 38%,
-              rgba(11, 7, 5, 0) 68%);
+  inset: -12% -6% 0;
+  background:
+    radial-gradient(72% 56% at 20% 64%,
+      rgba(240, 200, 137, 0.13) 0%,
+      rgba(214, 158, 86, 0.06) 38%,
+      rgba(11, 7, 5, 0) 72%),
+    radial-gradient(56% 46% at 82% 12%,
+      rgba(138, 95, 43, 0.11) 0%,
+      rgba(11, 7, 5, 0) 62%);
   pointer-events: none;
   z-index: 0;
 }
 
-.hero > *:not(.ember) { position: relative; z-index: 1; }
+.hero > *:not(.dusk) { position: relative; z-index: 1; }
 
-.wordmark { margin: 0 auto; max-width: 19rem; }
+/* --- the arch itself --- */
+
+.door {
+  position: relative;
+  margin: 0 auto;
+  width: min(90vw, 380px);
+  aspect-ratio: 0.66;             /* narrow and tall on a phone: a door */
+  display: grid;
+}
+
+/* the threshold — the base line the arch stands on, running wider than
+   the arch and fading out, as the rule under the wordmark does */
+.door::after {
+  content: "";
+  position: absolute;
+  left: -14%; right: -14%; bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    rgba(138, 95, 43, 0) 0%,
+    rgba(214, 158, 86, 0.40) 24%,
+    rgba(240, 200, 137, 0.55) 50%,
+    rgba(214, 158, 86, 0.40) 76%,
+    rgba(138, 95, 43, 0) 100%);
+}
+
+.arch { position: absolute; inset: 0; }
+
+/* Dusk, seen through the opening -- a hint of sky, not a picture of one.
+   The veil is heavy on purpose: flat expanses of gold read as mustard
+   (TOKENS.md), and a bright fill swallows the gold line drawn over it. */
+.arch-fill {
+  position: absolute;
+  inset: 0;
+  clip-path: url(#ogee);
+  background-color: var(--oud);
+  background-image:
+    radial-gradient(130% 34% at 50% 50%,
+      rgba(240, 200, 137, 0.10) 0%,
+      rgba(11, 7, 5, 0) 74%),
+    linear-gradient(180deg,
+      rgba(18, 11, 5, 0.865) 0%,
+      rgba(18, 11, 5, 0.915) 30%,
+      rgba(20, 12, 5, 0.968) 58%,
+      rgba(11, 7, 5, 0.995) 100%),
+    url("dusk.jpg");
+  background-repeat: no-repeat;
+  background-size: cover, cover, cover;
+  background-position: 50% 50%, 50% 50%, 50% 26%;
+}
+
+.arch-line {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.arch-line path {
+  fill: none;
+  stroke: url(#goldArch);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+/* --- what stands inside the door --- */
+
+.door-inner {
+  position: relative;
+  z-index: 2;
+  align-self: end;
+  padding: 0 9% 12%;
+}
+
+.wordmark { margin: 0 auto; max-width: 100%; }
+.wordmark picture { display: block; }
 .wordmark img { width: 100%; }
 
+/* --- the interrupted line: the brand's divider --- */
+
 .rule {
-  border: 0;
-  height: 1px;
-  width: min(15rem, 62%);
-  margin: 1.75rem auto;
-  background: linear-gradient(90deg,
-              rgba(138, 95, 43, 0) 0%,
-              var(--gold) 50%,
-              rgba(138, 95, 43, 0) 100%);
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: min(13rem, 88%);
+  margin: 1.15rem auto 1.05rem;
 }
+
+.rule-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+    rgba(138, 95, 43, 0) 0%, var(--gold) 100%);
+}
+.rule-line:last-child {
+  background: linear-gradient(90deg,
+    var(--gold) 0%, rgba(138, 95, 43, 0) 100%);
+}
+
+.rule-star {
+  flex: 0 0 auto;
+  width: 11px; height: 11px;
+  fill: url(#goldStar);
+}
+
+.rule--wide { width: min(17rem, 76%); margin: 1.6rem auto 1.9rem; }
+.rule--wide .rule-star { width: 13px; height: 13px; }
+
+/* --- the tagline --- */
 
 .tagline {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(0.72rem, 3.2vw, 0.95rem);
+  font-size: clamp(0.62rem, 2.7vw, 0.8rem);
   text-transform: uppercase;
   letter-spacing: 0.3em;
   text-indent: 0.3em;             /* balance the trailing letter-space */
-  line-height: 1.9;
+  line-height: 2;
   color: var(--gold);
 }
 
 /* Break between sentences, never inside one. */
 .tagline span { white-space: nowrap; }
 
-/* ---------- countdown ---------- */
+/* ---------- countdown (rendered by site.js only when a date is set) ---------- */
 
 /* `display: flex` below outranks the UA rule for [hidden], so restore it. */
 .countdown[hidden] { display: none; }
@@ -133,7 +272,7 @@ img { max-width: 100%; height: auto; display: block; }
 .countdown .cell {
   min-width: 3.75rem;
   padding: 0.85rem 0.35rem;
-  border: 1px solid rgba(214, 158, 86, 0.22);
+  border: 1px solid var(--hair);
   background: rgba(42, 26, 12, 0.45);
 }
 
@@ -143,7 +282,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: clamp(1.35rem, 6.5vw, 1.9rem);
   line-height: 1.1;
   font-variant-numeric: tabular-nums;
-  background: var(--gold-grad);
+  background-image: var(--gold-grad);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -158,40 +297,44 @@ img { max-width: 100%; height: auto; display: block; }
   color: var(--muted);
 }
 
-/* ---------- capture ---------- */
+/* ===================================================================
+   THE THRESHOLD — the step you take through the door
+   =================================================================== */
 
-.capture { margin: clamp(3rem, 11vh, 4.5rem) auto 0; max-width: var(--measure); }
+.capture { margin: clamp(2.25rem, 7vh, 3.25rem) auto 0; max-width: var(--measure); }
 
 /* No launch date yet: the countdown is absent, so close the gap it would fill. */
-.countdown[hidden] + .capture { margin-top: clamp(2.25rem, 6vh, 3rem); }
+.countdown[hidden] + .capture { margin-top: clamp(2rem, 6vh, 3rem); }
 
 .capture h2 {
   margin: 0;
   font-family: var(--display);
   font-weight: 400;
-  font-size: clamp(1.4rem, 6.5vw, 1.85rem);
-  letter-spacing: 0.02em;
+  font-size: clamp(1.35rem, 6vw, 1.7rem);
+  letter-spacing: 0.015em;
+  line-height: 1.3;
   color: var(--cream);
 }
 
 .capture-sub {
-  margin: 0.4rem 0 1.75rem;
+  margin: 0.3rem 0 1.5rem;
   color: var(--muted);
-  font-size: 0.95rem;
+  font-size: 0.94rem;
 }
 
-.field { display: flex; flex-direction: column; gap: 0.75rem; }
+.field { display: flex; flex-direction: column; gap: 0.6rem; }
 
 input[type="email"] {
   width: 100%;
-  padding: 1rem 1.1rem;
+  padding: 0.95rem 1.1rem;
   font-family: inherit;
   font-size: 1rem;                /* 16px — stops iOS zooming on focus */
+  line-height: 1.4;
   color: var(--cream);
   background: var(--oud);
-  border: 1px solid rgba(214, 158, 86, 0.28);
+  border: 1px solid rgba(214, 158, 86, 0.30);
   border-radius: 2px;
-  transition: border-color 0.2s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 input[type="email"]::placeholder { color: var(--muted); }
@@ -202,46 +345,158 @@ input[type="email"]:focus-visible {
   box-shadow: 0 0 0 1px rgba(214, 158, 86, 0.35);
 }
 
+/* The button is a plate on a door, not a slab of gold.
+   Its weight comes from the letterform and the hairline around it —
+   the mass on this page belongs to the arch, and nowhere else. */
 button[type="submit"] {
-  padding: 1rem 1.5rem;
-  min-height: 48px;               /* comfortable thumb target */
-  font-family: var(--display);
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  text-indent: 0.2em;
-  color: var(--oud);
-  background: var(--gold-grad);
-  border: 0;
+  min-height: 52px;
+  padding: 0.9rem 1.6rem;
+  border: 1px solid rgba(214, 158, 86, 0.42);
   border-radius: 2px;
   cursor: pointer;
-  transition: filter 0.2s ease;
+  background: var(--ember);
+  transition: border-color 0.25s ease, background-color 0.25s ease;
 }
 
-button[type="submit"]:hover:not(:disabled) { filter: brightness(1.08); }
-button[type="submit"]:focus-visible { outline: 2px solid var(--gold-lit); outline-offset: 3px; }
-button[type="submit"]:disabled { filter: grayscale(0.55) brightness(0.65); cursor: not-allowed; }
+/* The gradient clips to the label's own box. It cannot clip to the button's,
+   because the button also has to carry the fill behind it. */
+button[type="submit"] > span {
+  font-family: var(--display);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  text-indent: 0.22em;
+  background-image: var(--gold-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+button[type="submit"]:hover:not(:disabled) { border-color: var(--gold); background: #3A2410; }
+
+button[type="submit"]:focus-visible {
+  outline: 2px solid var(--gold-lit);
+  outline-offset: 2px;
+}
+
+button[type="submit"]:disabled { filter: grayscale(0.55) brightness(0.7); cursor: not-allowed; }
 input:disabled { opacity: 0.55; cursor: not-allowed; }
 
-.note { margin: 1rem 0 0; min-height: 1.4rem; font-size: 0.9rem; color: var(--gold); }
+.note { margin: 0.9rem 0 0; min-height: 1.4rem; font-size: 0.9rem; color: var(--gold); }
 .note.error { color: #E0A08A; }
 
-.fineprint { margin: 1.5rem 0 0; font-size: 0.8rem; color: var(--muted); }
+.fineprint { margin: 1.35rem 0 0; font-size: 0.8rem; line-height: 1.6; color: var(--muted); }
 
-/* ---------- the vessel ---------- */
+/* ===================================================================
+   THE HOUSE — what used to be a gap between the form and the picture
+   =================================================================== */
 
-.figure { padding: 0 var(--gutter); }
-
-.figure img {
+.house {
+  max-width: var(--measure);
   margin: 0 auto;
-  max-width: 26rem;
-  border: 1px solid rgba(214, 158, 86, 0.18);
+  padding: clamp(3.5rem, 11vh, 6rem) var(--gutter) clamp(2.5rem, 7vh, 4rem);
+  text-align: center;
 }
 
-/* ---------- promise ---------- */
+.eyebrow {
+  margin: 0 0 1.4rem;
+  font-family: var(--display);
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.34em;
+  text-indent: 0.34em;
+  color: var(--muted);
+}
+
+.lede {
+  margin: 0 0 1.4rem;
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 5.2vw, 1.55rem);
+  line-height: 1.55;
+  letter-spacing: 0.01em;
+  color: var(--cream);
+}
+
+.house .body { margin: 0; font-size: 1rem; }
+.house .muted { color: var(--muted); }
+
+/* ===================================================================
+   THREE PLATES ON ONE FLOOR
+   Every render is a still life with a ground plane and a reflection, so
+   these sit at their own heights on one shared line — not in a grid of
+   equal boxes, which is what the pictures are not.
+   =================================================================== */
+
+.plates {
+  max-width: 62rem;
+  margin: 0 auto;
+  padding: clamp(1rem, 4vh, 2rem) var(--gutter) 0;
+}
+
+.plate-row {
+  list-style: none;
+  margin: 0 auto clamp(4.6rem, 8vh, 5rem);
+  padding: 0;
+  display: flex;
+  align-items: flex-end;          /* the floor */
+  justify-content: center;
+  gap: clamp(0.8rem, 3vw, 2.25rem);
+  position: relative;
+  width: fit-content;             /* the floor is as wide as what stands on it */
+  margin-inline: auto;
+  max-width: 100%;
+}
+
+/* the floor */
+.plate-row::after {
+  content: "";
+  position: absolute;
+  left: -3%; right: -3%; bottom: 0;
+  height: 1px;
+  background: linear-gradient(90deg,
+    rgba(138, 95, 43, 0) 0%,
+    rgba(214, 158, 86, 0.42) 16%,
+    rgba(240, 200, 137, 0.52) 50%,
+    rgba(214, 158, 86, 0.42) 84%,
+    rgba(138, 95, 43, 0) 100%);
+}
+
+.plate { position: relative; margin: 0; }
+
+.plate img {
+  width: auto;
+  max-width: none;
+  border: 1px solid var(--hair-soft);
+  border-bottom: 0;               /* the row's line is its floor */
+}
+
+.plate--window img { height: min(50vw,   300px); }
+.plate--oud    img { height: min(31.7vw, 190px); }
+.plate--vessel img { height: min(41.5vw, 250px); }
+
+/* Captions hang below the floor line, in each picture's own column. */
+.caption {
+  position: absolute;
+  left: 0; right: 0;
+  top: calc(100% + 0.9rem);
+  margin: 0;
+  font-family: var(--display);
+  font-size: clamp(0.6rem, 2.2vw, 0.68rem);
+  line-height: 1.6;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
+  text-align: center;
+  text-wrap: balance;
+  color: var(--muted);
+}
+
+/* ===================================================================
+   THE RESOLVE
+   =================================================================== */
 
 .promise {
-  padding: clamp(3rem, 10vh, 5rem) var(--gutter);
+  padding: clamp(2rem, 7vh, 3.5rem) var(--gutter) clamp(3.5rem, 10vh, 5.5rem);
   max-width: var(--measure);
   margin: 0 auto;
   text-align: center;
@@ -250,48 +505,137 @@ input:disabled { opacity: 0.55; cursor: not-allowed; }
 .display {
   margin: 0;
   font-family: var(--display);
-  font-size: clamp(1.5rem, 7.5vw, 2.35rem);
+  font-size: clamp(1.5rem, 7.4vw, 2.35rem);
   text-transform: uppercase;
   letter-spacing: 0.12em;
   text-indent: 0.12em;
   line-height: 1.35;
-  background: var(--gold-grad);
+  background-image: var(--gold-grad);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
 
-.promise .body { margin: 0 0 1rem; font-size: 1.05rem; }
+.promise .body { margin: 0 0 0.9rem; font-size: 1.05rem; }
 .promise .muted { color: var(--muted); font-size: 0.95rem; }
 
-/* ---------- footer ---------- */
+/* ===================================================================
+   FOOTER — where the house is, said once and quietly
+   =================================================================== */
 
 footer {
-  padding: clamp(2.5rem, 8vh, 4rem) var(--gutter) calc(3rem + env(safe-area-inset-bottom));
+  padding: clamp(2.5rem, 8vh, 3.75rem) var(--gutter)
+           calc(2.75rem + env(safe-area-inset-bottom));
   text-align: center;
-  border-top: 1px solid rgba(214, 158, 86, 0.12);
+  border-top: 1px solid var(--hair-soft);
 }
 
-footer .mark { width: 3.25rem; margin: 0 auto 1.25rem; opacity: 0.9; }
+footer .mark { width: 2.9rem; margin: 0 auto 1.3rem; opacity: 0.92; }
 
-footer p {
-  margin: 0;
-  font-size: 0.78rem;
-  letter-spacing: 0.14em;
+.footer-line {
+  margin: 0 0 1.15rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
-/* ---------- wider than a phone ---------- */
+.where {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  margin: 0;
+}
+
+.where a {
+  font-family: var(--display);
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-indent: 0.2em;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 0.35rem 0.1rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.where a:hover { color: var(--gold-lit); border-bottom-color: rgba(240, 200, 137, 0.5); }
+.where a:focus-visible { outline: 2px solid var(--gold-lit); outline-offset: 3px; }
+
+.where .sep { flex: 0 0 auto; width: 8px; height: 8px; fill: var(--gold-deep); }
+
+/* ===================================================================
+   WIDER THAN A PHONE
+   =================================================================== */
 
 @media (min-width: 40rem) {
   :root { --gutter: 40px; }
-  .wordmark { max-width: 26rem; }
-  .field { flex-direction: row; }
-  .field input[type="email"] { flex: 1; }
-  .field button[type="submit"] { flex: 0 0 auto; }
+
+  .door { width: min(72vw, 500px); aspect-ratio: 0.72; }
+  .rule { width: min(15rem, 80%); }
+  .tagline { font-size: 0.78rem; letter-spacing: 0.28em; text-indent: 0.28em; }
+
+  /* Input and button become one bordered bar with a hairline between
+     them — one object, not a field plus a slab. */
+  .field {
+    flex-direction: row;
+    gap: 0;
+    background: var(--oud);
+    border: 1px solid rgba(214, 158, 86, 0.30);
+    border-radius: 2px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .field:focus-within { border-color: var(--gold); box-shadow: 0 0 0 1px rgba(214, 158, 86, 0.3); }
+
+  .field input[type="email"] {
+    flex: 1;
+    min-width: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+  }
+  .field input[type="email"]:focus-visible { box-shadow: none; }
+
+  .field button[type="submit"] {
+    flex: 0 0 auto;
+    border: 0;
+    border-left: 1px solid rgba(214, 158, 86, 0.26);
+    border-radius: 0;
+    background: transparent;
+  }
+  .field button[type="submit"]:hover:not(:disabled) { background: rgba(214, 158, 86, 0.09); }
+  .field button[type="submit"]:focus-visible { outline-offset: -3px; }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { transition: none !important; animation: none !important; }
+@media (min-width: 64rem) {
+  .door { width: min(46vw, 560px); aspect-ratio: 0.74; }
+}
+
+/* ===================================================================
+   MOTION — one sequence, once, on load: the door opens.
+   Written so the default state is VISIBLE and only the no-preference
+   branch hides then reveals. A reduced-motion visitor can never be
+   left looking at an element stuck at zero opacity.
+   =================================================================== */
+
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes mz-open  { from { opacity: 0; transform: scale(0.985); } to { opacity: 1; transform: none; } }
+  @keyframes mz-draw  { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+  @keyframes mz-rise  { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+
+  .arch-fill { animation: mz-open 900ms cubic-bezier(.22,.61,.36,1) both; }
+
+  .arch-line path {
+    stroke-dasharray: 100;
+    animation: mz-draw 1150ms cubic-bezier(.4,0,.2,1) 120ms both;
+  }
+
+  .door::after   { animation: mz-rise 700ms ease-out 820ms both; }
+  .wordmark      { animation: mz-rise 800ms cubic-bezier(.22,.61,.36,1) 420ms both; }
+  .door-inner .rule    { animation: mz-rise 700ms ease-out 700ms both; }
+  .door-inner .tagline { animation: mz-rise 700ms ease-out 820ms both; }
+  .capture       { animation: mz-rise 750ms ease-out 960ms both; }
 }

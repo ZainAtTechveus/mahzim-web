@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>mahzim — a heritage attar house</title>
 
-<meta name="description" content="A heritage attar house. Two letters. One essence. One name.">
+<meta name="description" content="A heritage attar house in Lahore. Two letters. One essence. One name.">
 <meta name="theme-color" content="#170E06">
 <!-- Held back from search until the handles are secured. Remove to index. -->
 <meta name="robots" content="noindex, nofollow">
@@ -18,31 +18,114 @@
 
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/wordmark.png">
+<!-- WebP is 204KB against the PNG's 443KB and is pixel-identical at 3x zoom;
+     the PNG stays as the fallback, so nothing is lost if WebP is unavailable.
+     The type attribute makes a non-WebP browser skip this preload. -->
+<link rel="preload" as="image" href="assets/wordmark.webp" type="image/webp">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 
 <body>
+
+<!-- ================================================================
+     Brand sprite. Two shapes carry the whole system:
+
+       #star  the four-point sparkle. In the artwork it is punctuation,
+              not decoration — it sits above the a, below the swash, and
+              it breaks the centre of every rule. Used at three sizes here.
+
+       #ogee  the arch. Three of the ten approved renders are built around
+              a pointed niche, and Pepper's line for the signup is "be first
+              through the door." So the page is a door. Drawn, never
+              photographed, so it stays sharp at any width.
+     ================================================================ -->
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0">
+  <defs>
+    <!-- Gold is never flat (TOKENS.md). The head of the arch silhouettes
+         against the sky and catches the light; the jambs fall into the dark
+         of the room, and the base picks the threshold up again. -->
+    <linearGradient id="goldArch" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#F0C889"/>
+      <stop offset="0.20" stop-color="#D69E56"/>
+      <stop offset="0.58" stop-color="#8A5F2B"/>
+      <stop offset="0.88" stop-color="#B8853F"/>
+      <stop offset="1"    stop-color="#D69E56"/>
+    </linearGradient>
+
+    <linearGradient id="goldStar" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0"    stop-color="#8A5F2B"/>
+      <stop offset="0.30" stop-color="#D69E56"/>
+      <stop offset="0.52" stop-color="#F0C889"/>
+      <stop offset="1"    stop-color="#8A5F2B"/>
+    </linearGradient>
+
+    <symbol id="star" viewBox="0 0 24 24">
+      <path d="M12 0c.4 7 4.6 11.6 12 12-7.4.4-11.6 5-12 12-.4-7-4.6-11.6-12-12
+               7.4-.4 11.6-5 12-12Z"/>
+    </symbol>
+
+    <!-- The ogee, in a 0..1 box so the same numbers clip the dusk and stroke
+         the line, and the two can never drift out of register. -->
+    <clipPath id="ogee" clipPathUnits="objectBoundingBox">
+      <path d="M0,1 L0,.46
+               C0,.27 .13,.13 .32,.13
+               C.425,.13 .472,.048 .5,0
+               C.528,.048 .575,.13 .68,.13
+               C.87,.13 1,.27 1,.46
+               L1,1 Z"/>
+    </clipPath>
+  </defs>
+</svg>
+
 <div id="preview-bar" hidden>Internal preview — the list is not yet open.</div>
 
 <main>
-  <!-- ---------- hero ---------- -->
+
+  <!-- ================= the door ================= -->
   <section class="hero">
-    <div class="ember" aria-hidden="true"></div>
+    <div class="dusk" aria-hidden="true"></div>
 
-    <h1 class="wordmark">
-      <img src="assets/wordmark.png" width="1200" height="348"
-           alt="mahzim, set in gold, with a four-point star above the a and a calligraphic swash beneath the h and z.">
-    </h1>
+    <div class="door">
+      <!-- the arch: dusk within, gold hairline around -->
+      <div class="arch" aria-hidden="true">
+        <div class="arch-fill"></div>
+        <svg class="arch-line" viewBox="0 0 1 1" preserveAspectRatio="none" focusable="false">
+          <path pathLength="100" vector-effect="non-scaling-stroke"
+                d="M0,1 L0,.46
+                   C0,.27 .13,.13 .32,.13
+                   C.425,.13 .472,.048 .5,0
+                   C.528,.048 .575,.13 .68,.13
+                   C.87,.13 1,.27 1,.46
+                   L1,1"/>
+        </svg>
+      </div>
 
-    <hr class="rule" aria-hidden="true">
+      <!-- what stands inside it -->
+      <div class="door-inner">
+        <h1 class="wordmark">
+          <picture>
+            <source srcset="assets/wordmark.webp" type="image/webp">
+            <img src="assets/wordmark.png" width="1200" height="348" fetchpriority="high"
+                 alt="mahzim, set in gold, with a four-point star above the a and a calligraphic swash beneath the h and z.">
+          </picture>
+        </h1>
 
-    <p class="tagline"><span>Two letters.</span> <span>One essence.</span> <span>One name.</span></p>
+        <div class="rule" role="presentation">
+          <span class="rule-line"></span>
+          <svg class="rule-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#star"/></svg>
+          <span class="rule-line"></span>
+        </div>
+
+        <p class="tagline"><span>Two letters.</span> <span>One essence.</span> <span>One name.</span></p>
+      </div>
+    </div>
 
     <!-- countdown renders only when a launch date is configured -->
     <div id="countdown" class="countdown" hidden aria-live="polite"></div>
 
-    <!-- ---------- capture ---------- -->
+    <!-- ================= the threshold =================
+         The form sits on the arch's base line and breaks it, the same way
+         the sparkle breaks every rule in the artwork. -->
     <section class="capture" aria-labelledby="join">
       <h2 id="join">Join the list.</h2>
       <p class="capture-sub">Be first through the door.</p>
@@ -53,7 +136,7 @@
           <input id="email" name="email" type="email" inputmode="email"
                  autocomplete="email" spellcheck="false"
                  placeholder="Email address" required>
-          <button id="submit" type="submit">First access</button>
+          <button id="submit" type="submit"><span>First access</span></button>
         </div>
         <p id="form-note" class="note" role="status" aria-live="polite"></p>
       </form>
@@ -62,27 +145,62 @@
     </section>
   </section>
 
-  <!-- ---------- the vessel ---------- -->
-  <section class="figure">
-    <img src="assets/bottle.jpg" width="1070" height="1390" loading="lazy" decoding="async"
-         alt="A black faceted perfume bottle with a gold collar and gold m monogram, resting on oud wood in warm smoke.">
+  <!-- ================= the house ================= -->
+  <section class="house">
+    <p class="eyebrow">The house</p>
+    <p class="lede">An attar house in Lahore.<br>Named for two people. Worn by one.</p>
+    <p class="body muted">Oil, never alcohol. It is worn on the skin rather than
+       sprayed into the air. It settles, warms, and stays.</p>
   </section>
 
+  <!-- ================= three plates on one floor =================
+       Every render is a still life with a ground plane and a reflection.
+       So these sit at their own heights on one shared line, not in a grid
+       of equal boxes. -->
+  <section class="plates" aria-label="The house, in three pictures">
+    <ul class="plate-row">
+      <li class="plate plate--window">
+        <img src="assets/plate-window.jpg" width="426" height="774" loading="lazy" decoding="async"
+             alt="A pointed stone arch opening onto Lahore at dusk, a minaret and domes beyond, an incense burner smoking on the sill.">
+        <p class="caption">Lahore, at dusk</p>
+      </li>
+      <li class="plate plate--oud">
+        <img src="assets/plate-oud.jpg" width="430" height="454" loading="lazy" decoding="async"
+             alt="Split oud wood, its grain veined with gold, resting on dark stone.">
+        <p class="caption">Oud, before the oil</p>
+      </li>
+      <li class="plate plate--vessel">
+        <img src="assets/plate-vessel.jpg" width="358" height="648" loading="lazy" decoding="async"
+             alt="A black faceted bottle with a gold collar and the gold m monogram, reflected in the stone beneath it.">
+        <p class="caption">The vessel</p>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ================= the resolve ================= -->
   <section class="promise">
     <p class="display">A scent that remains.</p>
-    <hr class="rule" aria-hidden="true">
-    <p class="body">
-      A house built on one idea:<br>
-      that two forms can become one.
-    </p>
+
+    <div class="rule rule--wide" role="presentation">
+      <span class="rule-line"></span>
+      <svg class="rule-star" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#star"/></svg>
+      <span class="rule-line"></span>
+    </div>
+
+    <p class="body">A house built on one idea:<br>that two forms can become one.</p>
     <p class="body muted">Not a fragrance yet. A name first.</p>
-    <p class="body muted">Attar and parfum.</p>
   </section>
+
 </main>
 
 <footer>
-  <img class="mark" src="assets/mark.png" width="760" height="778" loading="lazy" decoding="async" alt="">
-  <p>A heritage attar house.</p>
+  <img class="mark" src="assets/monogram.png" width="330" height="360" loading="lazy" decoding="async" alt="">
+  <p class="footer-line">A heritage attar house. Lahore.</p>
+  <p class="where">
+    <a href="https://www.instagram.com/mahzim.official/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <svg class="sep" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#star"/></svg>
+    <a href="https://wa.me/923390075856" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+  </p>
 </footer>
 
 <script src="config.js"></script>
